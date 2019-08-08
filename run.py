@@ -4,17 +4,19 @@ import os
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_cors import CORS
 from database import dbmodule
+from requests_toolbelt.adapters import appengine
 
+appengine.monkeypatch()
 
 
 ## This is the file that is invoked to start up a development server. It gets a copy of the app from your package and runs it. This won’t be used in production, but it will see a lot of mileage in development.
 app = Flask(__name__)
 CORS(app)
 
-'''
-ALPHA Back-end API with CRUD(Create, read, update, delete)
-for a user-based loggin website.
-'''
+# '''
+# ALPHA Back-end API with CRUD(Create, read, update, delete)
+# for a user-based loggin website.
+# '''
 
 
 @app.route('/')
@@ -22,13 +24,13 @@ def test():
     return jsonify({"msg": "hello"})
 
 
-'''
--------------Endpoint to login-------------
-1)Get the user details from front end (either from form or json)
-    -Front end will do validation on length and ensure client-side error checking
-    -Check to see if the email is taken
-2)Send json with success response or error if error (implement try blocks?)
-'''
+# '''
+# -------------Endpoint to login-------------
+# 1)Get the user details from front end (either from form or json)
+#     -Front end will do validation on length and ensure client-side error checking
+#     -Check to see if the email is taken
+# 2)Send json with success response or error if error (implement try blocks?)
+# '''
 @app.route('/login/', methods=['POST'])
 def login():
     res = request.form
@@ -57,13 +59,13 @@ def login():
     return jsonify({"err": "User Not Valid!"})
 
 
-'''
--------------Endpoint to CREATE a new user------------- #CREATE (C)RUD
-1)Get the user details from front end (either from form or json)
-    -Front end will do validation on length and ensure client-side error checking
-    -Check to see if the email is taken
-2)Send json with success response or error if error (implement try blocks?)
-'''
+# '''
+# -------------Endpoint to CREATE a new user------------- #CREATE (C)RUD
+# 1)Get the user details from front end (either from form or json)
+#     -Front end will do validation on length and ensure client-side error checking
+#     -Check to see if the email is taken
+# 2)Send json with success response or error if error (implement try blocks?)
+# '''
 @app.route('/signup/', methods=['POST', 'GET'])
 def sign_up():
     if(request.method == 'POST'):
@@ -88,14 +90,14 @@ def sign_up():
         return jsonify({"err": added_user['error']}), 401
 
 
-'''
--------------Endpoint to GET an existing user-------------#READ from C(R)UD
-1)Get the user details from front end (either from form or json)
-    -Front end will do validation on length and ensure client-side error checking
-    -Check to see if the email is taken
-2)Send json with success response or error if error (implement try blocks?)
+# '''
+# -------------Endpoint to GET an existing user-------------#READ from C(R)UD
+# 1)Get the user details from front end (either from form or json)
+#     -Front end will do validation on length and ensure client-side error checking
+#     -Check to see if the email is taken
+# 2)Send json with success response or error if error (implement try blocks?)
 
-'''
+# '''
 @app.route('/user/', methods=['GET'])
 def user():
     res = request.get_json()  # Grab the response as a python dict from json sent
@@ -115,15 +117,15 @@ def all_users():
     return dbmodule.allUsers()
 
 
-'''
--------------Endpoint to update a user's info-------------
-1)Get the user ID
-    -Get things they want to change
-        -We'll assume one thing changes at a time!
-    -Update the database with the things they wanted to edit
-        -Front end will do validation?
-2)Send json with success response or error if error (implement try blocks?)
-'''
+# '''
+# -------------Endpoint to update a user's info-------------
+# 1)Get the user ID
+#     -Get things they want to change
+#         -We'll assume one thing changes at a time!
+#     -Update the database with the things they wanted to edit
+#         -Front end will do validation?
+# 2)Send json with success response or error if error (implement try blocks?)
+# '''
 @app.route('/update/', methods=['PUT'])
 def update_user(user, field):
         # Grab the form data(could also be a json, if we front end sends that instead)
@@ -138,12 +140,12 @@ def update_user(user, field):
     return jsonify({"err": "Bad request"}), 400
 
 
-'''
--------------Endpoint to delete a user-------------
-1)Get the user ID
-    -Update the database with removing the delete
-2)Send json with success response or error if error (implement try blocks?)
-'''
+# '''
+# -------------Endpoint to delete a user-------------
+# 1)Get the user ID
+#     -Update the database with removing the delete
+# 2)Send json with success response or error if error (implement try blocks?)
+# '''
 @app.route('/deleteuser/', methods=['DELETE'])
 def delete_user(user):
     # Grab the form data(could also be a json, if we front end sends that instead)
