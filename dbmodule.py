@@ -3,16 +3,7 @@ import json
 import datetime
 
 def dbconnection():
-
-	#localhost
-	# mydb = mysql.connector.connect(
-	# 		host="localhost",
-	# 		user="root",
-	# 		passwd="",
-	# 		database="dbtest"
-	# )
-
-
+	
 	#webhosteddb
 	mydb = mysql.connector.connect(
 		host="35.239.141.59",
