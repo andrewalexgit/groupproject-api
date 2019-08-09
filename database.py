@@ -26,6 +26,8 @@ def dbconnection():
 
 	return mydb
 
+class subscriptions_db:
+	#by username, portname, or portid
 	def all_subscriptions_by(column_name, data_value):	
 
 		mydb = dbconnection()
@@ -105,7 +107,9 @@ def dbconnection():
 				return o.__str__()
 
 		return "subscription {username} to port {port_id} is updated".format(**local())
+		
 
+class ports_db:
 
 	def all_ports():
 
@@ -156,6 +160,10 @@ def dbconnection():
 
 		return posts_db.all_ports()
 
+
+class users_db:
+	#no input, returns all active users
+	#returns fields: userid, username, email, first, last, avatarUrl
 	def all_users():	
 
 		mydb = dbconnection()
@@ -295,6 +303,12 @@ def dbconnection():
 
 		return "user {username} deleted".format(**local())
 		
+class posts_db:
+
+	#column_name = port_id or author
+	#data_value depends on the column (always a string)
+	#e.g. http://localhost:5000/all_posts_by?column=author&value=chalshaff12
+	#or http://localhost:5000/all_posts_by?column=port_id&value=1
 	def all_posts_by(column_name, data_value):
 
 		mydb = dbconnection()
@@ -388,6 +402,10 @@ def dbconnection():
 				return o.__str__()
 
 		return posts_db.all_posts_by('author', post_id)
+
+		
+class comments_db:
+
 	
 	def all_comments_by(column_name, data_value):
 
@@ -413,6 +431,8 @@ def dbconnection():
 			if isinstance(o, datetime.datetime):
 				return o.__str__()
 		return json.dumps({'comments':json_data}, default = myconverter)	
+
+
 
 	def add_comment(text, post_id, parent_id, author):
 
