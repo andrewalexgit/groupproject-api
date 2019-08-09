@@ -13,6 +13,11 @@ ALPHA Back-end API with CRUD(Create, read, update, delete)
 for a user-based loggin website.
 '''
 
+@app.route('/')
+def index():
+
+    return "Welcome to the API"
+
 #Test route if sending username directly
 @app.route('/test/<username>', methods=['GET'])
 def usertest(username):
