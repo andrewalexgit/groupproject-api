@@ -52,7 +52,7 @@ def all_users():
 			if isinstance(o, datetime.datetime):
 				return o.__str__()
 		return json.dumps({'all_users':json_data}, default = myconverter)
-		
+
 def add_user(email, password, username, first, last, avatarurl):
 
 		mydb = dbconnection()
@@ -64,7 +64,7 @@ def add_user(email, password, username, first, last, avatarurl):
 			cursor.execute(sql)
 			mydb.commit()
 		except mysql.connector.Error as err:
-			return json.dumps({'error':str(err)})
+			return json.dumps({'error':str(err), 'module':'db' })
 
 		#close database connection
 		cursor.close()
