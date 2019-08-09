@@ -74,4 +74,4 @@ def add_user(email, password, username, first, last, avatarurl):
 			if isinstance(o, datetime.datetime):
 				return o.__str__()
 
-		return find_users('username', username)
+		return username
