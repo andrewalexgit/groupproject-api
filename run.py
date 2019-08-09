@@ -106,8 +106,8 @@ def sign_up():
             added_user = json.loads(dbmodule.add_user(
                 email,  password, username,  first, last, description, avatarurl))
             pass
-        except:
-            return jsonify({"err": "Missing Form Data"})
+        except Exception as e:
+            return jsonify({"err": str(e)})
 
     try:
         return jsonify({"response": added_user['users'][0]}), 201
