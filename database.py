@@ -53,7 +53,7 @@ def all_users():
 				return o.__str__()
 		return json.dumps({'all_users':json_data}, default = myconverter)
 
-def add_user(email, password, username, first, last, avatarurl):
+def add_user(self, email, password, username, first, last, avatarurl):
 
 		mydb = dbconnection()
 		cursor = mydb.cursor(buffered=True)
