@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from flask import Flask, render_template, request, redirect, jsonify
-from database import users_db
+from dbmodule import dbtest as dbmodule
 import requests_toolbelt.adapters.appengine
 
 requests_toolbelt.adapters.appengine.monkeypatch()
@@ -16,7 +16,7 @@ for a user-based loggin website.
 @app.route('/')
 def index():
     
-    return "Welcome to the API, currently only GET all_users is the only workable function here. Check back later for updates!"
+    return dbmodule.all_users()
 
 #Test route if sending username directly
 @app.route('/test/<username>', methods=['GET'])
