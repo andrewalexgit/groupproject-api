@@ -106,7 +106,7 @@ def sign_up():
                 email,  password, username,  first, last, avatarurl))
             pass
         except Exception as e:
-            return jsonify({"err": str(e)})
+            return jsonify({"err": str(e), "module":"run" })
 
     try:
         return jsonify({"response": added_user['users'][0]}), 201
