@@ -139,7 +139,7 @@ def user():
 
 @app.route('/allusers/')
 def all_users():
-    return dbmodule.users_db.all_users()
+    return dbmodule.all_users()
 
 
 '''
