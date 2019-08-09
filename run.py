@@ -15,8 +15,8 @@ for a user-based loggin website.
 
 @app.route('/')
 def index():
-
-    return "Welcome to the API"
+    
+    return "Welcome to the API, currently only GET all_users is the only workable function here. Check back later for updates!"
 
 #Test route if sending username directly
 @app.route('/test/<username>', methods=['GET'])
