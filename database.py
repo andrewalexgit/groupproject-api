@@ -55,12 +55,12 @@ def all_users():
 
 def add_user(email, password, username, first, last, avatarurl):
 
-		mydb = dbconnection()
-		cursor = mydb.cursor(buffered=True)
-
-		sql = "INSERT INTO users (email, password, username, first, last, description, avatarurl) VALUES ('{email}','{password}','{username}','{first}','{last}', '{description}', '{avatarurl}')".format(**local())
-		
 		try:
+			mydb = dbconnection()
+			cursor = mydb.cursor(buffered=True)
+
+			sql = "INSERT INTO users (email, password, username, first, last, description, avatarurl) VALUES ('{email}','{password}','{username}','{first}','{last}', '{description}', '{avatarurl}')".format(**local())
+		
 			cursor.execute(sql)
 			mydb.commit()
 		except mysql.connector.Error as err:
