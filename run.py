@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json, os, requests
+import json
 from flask import Flask, render_template, request, redirect, jsonify
 import dbmodule
 import requests_toolbelt.adapters.appengine
