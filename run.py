@@ -103,7 +103,7 @@ def sign_up():
             last = res['last']
             description = res['description']
             avatarurl = res['avatarurl']
-            added_user = json.loads(dbmodule.users_db.add_user(
+            added_user = json.loads(dbmodule.add_user(
                 email,  password, username,  first, last, description, avatarurl))
             pass
         except:
