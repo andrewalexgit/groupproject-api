@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from flask import Flask, render_template, request, redirect, jsonify
-import database as dbmodule
+from database import users_db
 import requests_toolbelt.adapters.appengine
 
 requests_toolbelt.adapters.appengine.monkeypatch()
