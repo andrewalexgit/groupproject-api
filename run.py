@@ -101,10 +101,9 @@ def sign_up():
             password = res['password']
             first = res['first']
             last = res['last']
-            description = res['description']
             avatarurl = res['avatarurl']
             added_user = json.loads(dbmodule.add_user(
-                email,  password, username,  first, last, description, avatarurl))
+                email,  password, username,  first, last, avatarurl))
             pass
         except Exception as e:
             return jsonify({"err": str(e)})
