@@ -1,4 +1,3 @@
-language: python
 deploy:
   provider: gae
   keyfile: "GroupAPI-1223f397926e.json"
