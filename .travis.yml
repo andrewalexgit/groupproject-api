@@ -3,5 +3,7 @@ deploy:
   keyfile: "GroupAPI-1223f397926e.json"
   project: "groupapi-249215"
 install:
-  - pip install -r requirements.text
-  - bash configurelib.sh
+  - cd grouproject-api/groupproject-api
+  - ls - l
+  - sudo pip install -r requirements.text
+  - sudo bash configurelib.sh
