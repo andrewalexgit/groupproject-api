@@ -5,4 +5,3 @@ deploy:
   project: "groupapi-249215"
 install:
   - sudo pip install -r requirements.text
-  - sudo bash configurelib.sh
