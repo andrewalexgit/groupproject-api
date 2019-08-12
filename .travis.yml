@@ -3,10 +3,6 @@ deploy:
   provider: gae
   keyfile: "GroupAPI-1223f397926e.json"
   project: "groupapi-249215"
-python:
-  - "2.7"
-  - "2.7.13"
-# command to install dependencies
 install:
   - pip install -r requirements.txt
   - bash configurelib.sh
