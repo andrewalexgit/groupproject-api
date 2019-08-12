@@ -58,12 +58,13 @@ def add_user(email, password, username, first, last, avatarurl):
 	try:
 		mydb = dbconnection()
 		cursor = mydb.cursor(buffered=True)
+                description = "Regular user"
 
 		sql = "INSERT INTO users (email, password, username, first, last, description, avatarurl) VALUES ('{email}','{password}','{username}','{first}','{last}', '{description}', '{avatarurl}')".format(**local())
 	
 		cursor.execute(sql)
 		mydb.commit()
-	except mysql.connector.Error as err:
+	except Exception  as err:
 		return json.dumps({'error':str(err), 'module':'db' })
 
 	#close database connection

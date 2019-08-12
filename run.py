@@ -102,8 +102,17 @@ def sign_up():
             first = res['first']
             last = res['last']
             avatarurl = res['avatarurl']
+
+            print(email)
+            print(password)
+            print(username)
+            print(first)
+            print(last)
+            print(avatarurl)
+
+            dbmodule.add_user(email, password, username, first, last, avatarurl)
             
-            return username
+            return "Added " + username
 
         except Exception as e:
             
