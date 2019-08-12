@@ -16,7 +16,7 @@ for a user-based loggin website.
 @app.route('/')
 def index():
     
-    return "Welcome to the API"
+    return "Welcome to the API - We now are deploying live with Travis CI"
 
 #Test route if sending username directly
 @app.route('/test/<username>', methods=['GET'])
